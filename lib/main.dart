@@ -13,12 +13,18 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Shuttle',
-      theme: ThemeData(
-      ),
+      theme: ThemeData(),
       home: SafeArea(
         child: Scaffold(
           backgroundColor: Color(0xFF1C1C1C),
-          body: firstscreen(),
+          body: Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/wall.jpg"),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              child: firstscreen()),
         ),
       ),
     );
