@@ -12,30 +12,77 @@ class firstscreen extends StatelessWidget {
       children: [
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
-              alignment: Alignment.center,
-              clipBehavior: Clip.none,
-              height: 230,
-              width: 180,
+              height: MediaQuery.of(context).size.height * 0.28,
+              width: MediaQuery.of(context).size.width * 0.43,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(15)),
                 color: Color(0xffc7c7c7),
               ),
-              child: Image.asset("assets/bus.png"),
-            ),
-            SizedBox(
-              width: 20,
+              child: Stack(
+                alignment: Alignment.center,
+                clipBehavior: Clip.none,
+                children: [
+                  Positioned(
+                    top: -50,
+                    child: Image.asset(
+                      "assets/bus.png",
+                      height: MediaQuery.of(context).size.height * 0.3,
+                      width: MediaQuery.of(context).size.width * 0.43,
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 10,
+                    child: Text(
+                      "Search Bus",
+                      style: TextStyle(
+                          color: Colors.black,
+                          height: 2,
+                          fontSize: 26,
+                          letterSpacing: 2,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "shuttle"),
+                    ),
+                  )
+                ],
+              ),
             ),
             Container(
-              height: 230,
-              width: 180,
+              height: MediaQuery.of(context).size.height * 0.28,
+              width: MediaQuery.of(context).size.width * 0.43,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(15)),
                 color: Color(0xffc7c7c7),
               ),
-              child: Image.asset("assets/search.png"),
+              child: Stack(
+                alignment: Alignment.center,
+                clipBehavior: Clip.none,
+                children: [
+                  Positioned(
+                    top: -50,
+                    child: Image.asset(
+                      "assets/search.png",
+                      height: MediaQuery.of(context).size.height * 0.3,
+                      width: MediaQuery.of(context).size.width * 0.43,
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 10,
+                    child: Text(
+                      "Track Bus",
+                      style: TextStyle(
+                          color: Colors.black,
+                          height: 2,
+                          fontSize: 26,
+                          letterSpacing: 2,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "shuttle"),
+                    ),
+                  )
+                ],
+              ),
             ),
           ],
         ),
