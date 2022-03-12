@@ -15,7 +15,7 @@ class firstscreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
-              height: MediaQuery.of(context).size.height * 0.28,
+              height: MediaQuery.of(context).size.height * 0.27,
               width: MediaQuery.of(context).size.width * 0.43,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -50,7 +50,7 @@ class firstscreen extends StatelessWidget {
               ),
             ),
             Container(
-              height: MediaQuery.of(context).size.height * 0.28,
+              height: MediaQuery.of(context).size.height * 0.27,
               width: MediaQuery.of(context).size.width * 0.43,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(15)),
