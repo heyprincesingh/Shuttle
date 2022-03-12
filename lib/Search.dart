@@ -18,7 +18,7 @@ class search extends StatelessWidget {
               shape: RoundedRectangleBorder(
                   side: BorderSide(
                     color: Colors.white,
-                    width: 1.0,
+                    width: 2.0,
                   ),
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(25),
