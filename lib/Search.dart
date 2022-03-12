@@ -15,91 +15,97 @@ class search extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Card(
-            shape: RoundedRectangleBorder(
-                side: BorderSide(
-                  color: Colors.white,
-                  width: 1.0,
-                ),
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(25),
-                    topRight: Radius.circular(25))),
-            elevation: 80,
-            color: Color(0x12121212),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(14, 14, 14, 5),
-                  child: BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(15),
-                              topRight: Radius.circular(15))),
-                      elevation: 20,
-                      color: Colors.white,
-                      child: Container(
-                        height: 40,
-                        width: MediaQuery.of(context).size.width * 0.7,
+              shape: RoundedRectangleBorder(
+                  side: BorderSide(
+                    color: Colors.white,
+                    width: 1.0,
+                  ),
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(25),
+                      topRight: Radius.circular(25))),
+              color: Color(0x12121212),
+              child: Container(
+                height: 200,
+                width: MediaQuery.of(context).size.width * 0.8,
+                child: Stack(
+                  children: [
+                    Positioned(
+                        top: 0,
                         child: Padding(
-                          padding: const EdgeInsets.only(left: 15),
-                          child: TextFormField(
-                            cursorColor: Colors.black,
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: 'From',
+                          padding: const EdgeInsets.fromLTRB(14, 14, 14, 5),
+                          child: BackdropFilter(
+                            filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+                            child: Card(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(15),
+                                      topRight: Radius.circular(15))),
+                              elevation: 20,
+                              color: Colors.white,
+                              child: Container(
+                                height: 40,
+                                width: MediaQuery.of(context).size.width * 0.7,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 15),
+                                  child: TextFormField(
+                                    cursorColor: Colors.black,
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintText: 'From',
+                                    ),
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(14, 5, 14, 14),
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(15),
-                            bottomRight: Radius.circular(15))),
-                    elevation: 20,
-                    color: Colors.white,
-                    child: Container(
-                      height: 40,
-                      width: MediaQuery.of(context).size.width * 0.7,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 15),
-                        child: TextFormField(
-                          cursorColor: Colors.black,
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: 'To',
+                        )),
+                    Positioned(
+                        top: 65,
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(14, 5, 14, 14),
+                          child: Card(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(15),
+                                    bottomRight: Radius.circular(15))),
+                            elevation: 20,
+                            color: Colors.white,
+                            child: Container(
+                              height: 40,
+                              width: MediaQuery.of(context).size.width * 0.7,
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: TextFormField(
+                                  cursorColor: Colors.black,
+                                  decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    hintText: 'To',
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
+                        )),
+                    Positioned(
+                      top: 135,
+                      left: MediaQuery.of(context).size.width * 0.21,
+                      child: ElevatedButton(
+                      child: Container(
+                          width: MediaQuery.of(context).size.width * 0.3,
+                          height: MediaQuery.of(context).size.height * 0.045,
+                          child: Center(child: Text("Search",style: TextStyle(fontSize: 18),))),
+                      onPressed: () => print("it's pressed"),
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.blue,
+                        onPrimary: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(32.0),
                         ),
                       ),
-                    ),
-                  ),
+                    ))
+                  ],
                 ),
-                ElevatedButton(
-                  child: Container(
-                      width: MediaQuery.of(context).size.width * 0.3,
-                      height: MediaQuery.of(context).size.height * 0.045,
-                      child: Center(child: Text("Search",style: TextStyle(fontSize: 18),))),
-                  onPressed: () => print("it's pressed"),
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.blue,
-                    onPrimary: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(32.0),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                )
-              ],
-            ),
-          ),
+              )),
           SizedBox(
             height: 10,
           ),
