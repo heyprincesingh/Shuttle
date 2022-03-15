@@ -60,7 +60,7 @@ class search extends StatelessWidget {
                           ),
                         )),
                     Positioned(
-                        top: 65,
+                        top: MediaQuery.of(context).size.height / 12,//65,
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(14, 5, 14, 14),
                           child: Card(
@@ -87,12 +87,12 @@ class search extends StatelessWidget {
                           ),
                         )),
                     Positioned(
-                      top: 135,
+                      top: MediaQuery.of(context).size.height / 5.8,//135,
                       left: MediaQuery.of(context).size.width * 0.21,
                       child: ElevatedButton(
                       child: Container(
                           width: MediaQuery.of(context).size.width * 0.3,
-                          height: MediaQuery.of(context).size.height * 0.045,
+                          height: MediaQuery.of(context).size.height * 0.05,
                           child: Center(child: Text("Search",style: TextStyle(fontSize: 18),))),
                       onPressed: () => print("it's pressed"),
                       style: ElevatedButton.styleFrom(
@@ -102,7 +102,12 @@ class search extends StatelessWidget {
                           borderRadius: BorderRadius.circular(32.0),
                         ),
                       ),
-                    ))
+                    )),
+                    Positioned(
+                        top: MediaQuery.of(context).size.height * 0.0578,
+                        right: 30,
+                        //child: Icon(CupertinoIcons.arrow_up_arrow_down_circle_fill,size: 40,color: Colors.blue,)),
+                        child: Icon(CupertinoIcons.arrow_up_arrow_down_circle_fill,size: 40,color: Colors.blue,)),
                   ],
                 ),
               )),
@@ -137,7 +142,8 @@ class search extends StatelessWidget {
                     )
                   ],
                 ),
-              ))
+              )),
+
         ],
       ),
     );
