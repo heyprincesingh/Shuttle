@@ -12,7 +12,7 @@ class search_bus_list extends StatelessWidget {
       child: Container(
         height: 200,
         width: MediaQuery.of(context).size.width,
-        // color: Colors.amber,
+        color: Colors.amber,
 
         child: Column(
           children: [
