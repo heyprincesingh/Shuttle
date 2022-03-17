@@ -1,125 +1,195 @@
 import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class search_bus_list extends StatelessWidget {
-  const search_bus_list({Key? key}) : super(key: key);
+  String? from_text;
+  String? to_text;
+  search_bus_list({Key? key,this.from_text,this.to_text}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      //height: MediaQuery.of(context).size.height,
-      child: Padding(
-        padding: const EdgeInsets.all(15),
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
-          child: ListView.builder(
-              itemCount: 4,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 20),
-                  child: Container(
-                    height: 200,
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                          width: 2.0,
-                            color: Colors.white24),
-                        color: Colors.white24,
-                        borderRadius: BorderRadius.circular(15)),
-                    width: MediaQuery.of(context).size.width,
-                    //color: Colors.amber,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-
-                        Text("TN61 AF 2002",style: TextStyle(fontSize: 25, color: Colors.white,fontWeight: FontWeight.bold),),
-
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(16,10,16,8),
-                              child: Text(
-                                "Medical",
-                                style: TextStyle(fontSize: 25, color: Colors.white,fontWeight: FontWeight.bold),
+    return SafeArea(
+      child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/wall.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        height: MediaQuery
+            .of(context)
+            .size
+            .height,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(15, 10, 15, 0),
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+            child: ListView.builder(
+                itemCount: 6,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 20),
+                    child: Container(
+                      height: 200,
+                      decoration: BoxDecoration(
+                          border: Border.all(width: 2.0, color: Colors.white24),
+                          color: Colors.white24,
+                          borderRadius: BorderRadius.circular(15)),
+                      width: MediaQuery
+                          .of(context)
+                          .size
+                          .width,
+                      //color: Colors.amber,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "TN61 AF 2002",
+                            style: TextStyle(
+                                decoration: TextDecoration.none,
+                                fontSize: 25,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500),
+                          ),
+                          SizedBox(height: 15),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SizedBox(width: 10),
+                              Text(
+                                "$from_text",
+                                style: TextStyle(
+                                    decoration: TextDecoration.none,
+                                    fontSize: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .height *
+                                        0.028,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
                               ),
-                            ),
-                            Expanded(
-                              child: Container(
-                                margin: EdgeInsets.only(left: 10, right: 10),
-                                child: Divider(
-                                  height: 50,
-                                  color: Colors.white,
-                                  thickness: 5,
+                              Expanded(
+                                child: Container(
+                                  margin: EdgeInsets.only(left: 10, right: 10),
+                                  child: Divider(
+                                    height: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .height *
+                                        0.031,
+                                    color: Colors.white,
+                                    thickness: 1,
+                                  ),
                                 ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(13,10,16,8),
-                              child: Text(
-                                "Java Point",
-                                style: TextStyle(fontSize: 25, color: Colors.white,fontWeight: FontWeight.bold),
+                              Text(
+                                "$to_text",
+                                style: TextStyle(
+                                    decoration: TextDecoration.none,
+                                    fontSize: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .height *
+                                        0.028,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
                               ),
-                            )
-                          ],
-                        ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(18.0,8,10,15),
-                              child: Text(
+                              SizedBox(width: 10),
+                            ],
+                          ),
+                          SizedBox(height: 10),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              SizedBox(width: 10),
+                              Text(
                                 "7:45 AM",
-                                style: TextStyle(fontSize: 23, color: Colors.white),
+                                style:
+                                TextStyle(
+                                    decoration: TextDecoration.none,
+                                    fontSize: 23, color: Colors.white),
                                 textAlign: TextAlign.left,
                               ),
-                            ),
-                            Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.fromLTRB(13,8,18,15),
+                              Expanded(
                                   child: Text(
-                              "8:05 AM",
-                              style: TextStyle(fontSize: 23, color: Colors.white),
-                              textAlign: TextAlign.right,
-                            ),
-                                )),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ButtonTheme(
-                              minWidth: 200,
-                              height: 50,
-                              child: RaisedButton(
-                                child: Text(
-                                  "Track",
-                                  style:
-                                      TextStyle(fontSize: 20, color: Colors.white),
-                                ),
-                                onPressed: () => {},
-                                shape: StadiumBorder(),
-                                color: Colors.blue,
-                              ),
-                            ),
-                            SizedBox(width: 20,),
-                            FloatingActionButton(
-                              onPressed: () => {},
-                              shape: StadiumBorder(),
-                              backgroundColor: Colors.blue,
-                              child: Icon(Icons.notifications),
-                            ),
-                          ],
-                        ),
-                      ],
+                                    "8:05 AM",
+                                    style:
+                                    TextStyle(
+                                        decoration: TextDecoration.none,
+                                        fontSize: 23, color: Colors.white),
+                                    textAlign: TextAlign.right,
+                                  )),
+                              SizedBox(width: 10),
+                            ],
+                          ),
+                          SizedBox(height: 15),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Card(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(25),
+                                          topLeft: Radius.circular(25))),
+                                  elevation: 10,
+                                  color: Colors.blue,
+                                  child: GestureDetector(
+                                    behavior: HitTestBehavior.opaque,
+                                    onTap: (){
+                                      print("From => $from_text");
+                                      print("To => $to_text");
+                                    },
+                                    child: Container(
+                                      height: 50,
+                                      width:
+                                      MediaQuery
+                                          .of(context)
+                                          .size
+                                          .width * 0.6,
+                                      child: Center(
+                                        child: Text(
+                                          "Track Shuttle",
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w500,
+                                              letterSpacing: 1.5),
+                                        ),
+                                      ),
+                                    ),
+                                  )),
+                              GestureDetector(
+                                behavior: HitTestBehavior.opaque,
+                                onTap: (){},
+                                child: Card(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.only(
+                                            bottomRight: Radius.circular(25),
+                                            topRight: Radius.circular(25))),
+                                    elevation: 10,
+                                    color: Colors.blue,
+                                    child: Container(
+                                        height: 50,
+                                        width:
+                                        MediaQuery
+                                            .of(context)
+                                            .size
+                                            .width * 0.15,
+                                        child: Icon(Icons.notifications_active,color: Colors.white,)
+                                    )),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                );
-              }),
+                  );
+                }),
+          ),
         ),
       ),
     );

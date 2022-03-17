@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shuttle/Login_driver.dart';
 
 class login extends StatelessWidget {
   const login({Key? key}) : super(key: key);
@@ -91,27 +92,30 @@ class login extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(25),
-                      bottomRight: Radius.circular(25))),
-              elevation: 80,
-              color: Colors.blue,
-              child: Container(
-                height: 50,
-                width: MediaQuery.of(context).size.width * 0.8,
-                child: Center(
-                  child: Text(
-                    "Log In",
-                    style: TextStyle(
-                        fontSize: 22,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w500,
-                        letterSpacing: 1.5),
+          GestureDetector(
+            onTap:() => Navigator.push(context, MaterialPageRoute(builder: (context) => const login_driver())),
+            child: Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(25),
+                        bottomRight: Radius.circular(25))),
+                elevation: 80,
+                color: Colors.blue,
+                child: Container(
+                  height: 50,
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  child: Center(
+                    child: Text(
+                      "Log In",
+                      style: TextStyle(
+                          fontSize: 22,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500,
+                          letterSpacing: 1.5),
+                    ),
                   ),
-                ),
-              ))
+                )),
+          )
         ],
       ),
     );

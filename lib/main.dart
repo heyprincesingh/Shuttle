@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shuttle/Login.dart';
 import 'package:shuttle/Search.dart';
-import 'package:shuttle/Search_bus_list.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:shuttle/history.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +18,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
 
   int _currentIndex = 1;
-  final screenIndex = [login(),search(),search_bus_list()];
+  final screenIndex = [login(),search(),history()];
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -53,7 +53,7 @@ class _MyAppState extends State<MyApp> {
                   message: "History",
                   child: Icon(Icons.history_outlined,size: 25,color: Colors.white)),
             ],
-            height: 50,
+            height: 55,
             index: 1,
             onTap: (index) => setState(() => _currentIndex = index),
           ),
