@@ -1,6 +1,8 @@
 import 'dart:ui';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shuttle/bus_details.dart';
+import 'package:shuttle/setAlert.dart';
 
 class history extends StatelessWidget {
   const history({Key? key}) : super(key: key);
@@ -146,7 +148,7 @@ class history extends StatelessWidget {
                                       color: Colors.blue,
                                       child: GestureDetector(
                                         behavior: HitTestBehavior.opaque,
-                                        onTap: () {},
+                                        onTap:() => Navigator.push(context, MaterialPageRoute(builder: (context) => const bus_details())),
                                         child: Container(
                                           height: 50,
                                           width: MediaQuery.of(context)
@@ -167,12 +169,13 @@ class history extends StatelessWidget {
                                       )),
                                   GestureDetector(
                                     behavior: HitTestBehavior.opaque,
-                                    onTap: () {},
+                                    onTap: () {
+                                      //delete bus history
+                                    },
                                     child: Card(
                                         shape: RoundedRectangleBorder(
                                             borderRadius: BorderRadius.only(
-                                                bottomRight:
-                                                    Radius.circular(25),
+                                                bottomRight: Radius.circular(25),
                                                 topRight: Radius.circular(25))),
                                         elevation: 10,
                                         color: Colors.blue,
@@ -183,7 +186,7 @@ class history extends StatelessWidget {
                                                     .width *
                                                 0.15,
                                             child: Icon(
-                                              Icons.notifications_active,
+                                              CupertinoIcons.delete,
                                               color: Colors.white,
                                             ))),
                                   )

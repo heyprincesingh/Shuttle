@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shuttle/Login.dart';
-import 'package:shuttle/Search.dart';
+import 'package:shuttle/Driver/Login.dart';
+import 'package:shuttle/Search/Search.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:shuttle/history.dart';
+import 'package:shuttle/History/history.dart';
 
 void main() {
   runApp(const MyApp());

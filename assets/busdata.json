@@ -1,0 +1,77 @@
+[
+  {
+    "ROUTE0": [
+      "ROUTE NO: S1",
+      {
+        "time": "06:20",
+        "Stop": "Avadi"
+      },
+      {
+        "time": "06:25",
+        "Stop": "Thirumullaivoyal"
+      },
+      {
+        "time": "06:27",
+        "Stop": "Ambattur OT"
+      },
+      {
+        "time": "06:35",
+        "Stop": "Ambattur Estate"
+      },
+      {
+        "time": "06:37",
+        "Stop": "Golden Flats"
+      },
+      {
+        "time": "06:40",
+        "Stop": "Collector Nagar"
+      }
+    ]
+  },
+  {
+    "ROUTE1": [
+      "ROUTE NO: S1-A",
+      {
+        "time": "06:30",
+        "Stop": "Anna Nagar West Depot"
+      },
+      {
+        "time": "06:35",
+        "Stop": "Thirumangalam"
+      },
+      {
+        "time": "06:40",
+        "Stop": "Waves"
+      },
+      {
+        "time": "06:50",
+        "Stop": "Vavin"
+      },
+      {
+        "time": "06:55",
+        "Stop": "Porur Toll Gate"
+      }
+    ]
+  },
+  {
+    "ROUTE2": [
+      "ROUTE NO: S2",
+      "06:20",
+      "Ayanavaram",
+      "06:24",
+      "Ayanavaram Noor Hotel",
+      "06:28",
+      "ICF",
+      "06:30",
+      "Nathamuni",
+      "06:35",
+      "Anna Nagar West Depot",
+      "06:38",
+      "Thirumangalam",
+      "06:42",
+      "Nerkundram",
+      "06:46",
+      "Maduravoyal"
+    ]
+  }
+]

@@ -1,11 +1,13 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shuttle/bus_details.dart';
 
 class search_bus_list extends StatelessWidget {
   String? from_text;
   String? to_text;
-  search_bus_list({Key? key,this.from_text,this.to_text}) : super(key: key);
+
+  search_bus_list({Key? key, this.from_text, this.to_text}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +19,7 @@ class search_bus_list extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        height: MediaQuery
-            .of(context)
-            .size
-            .height,
+        height: MediaQuery.of(context).size.height,
         child: Padding(
           padding: const EdgeInsets.fromLTRB(15, 10, 15, 0),
           child: BackdropFilter(
@@ -36,10 +35,7 @@ class search_bus_list extends StatelessWidget {
                           border: Border.all(width: 2.0, color: Colors.white24),
                           color: Colors.white24,
                           borderRadius: BorderRadius.circular(15)),
-                      width: MediaQuery
-                          .of(context)
-                          .size
-                          .width,
+                      width: MediaQuery.of(context).size.width,
                       //color: Colors.amber,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -63,11 +59,9 @@ class search_bus_list extends StatelessWidget {
                                 "$from_text",
                                 style: TextStyle(
                                     decoration: TextDecoration.none,
-                                    fontSize: MediaQuery
-                                        .of(context)
-                                        .size
-                                        .height *
-                                        0.028,
+                                    fontSize:
+                                        MediaQuery.of(context).size.height *
+                                            0.028,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -75,10 +69,7 @@ class search_bus_list extends StatelessWidget {
                                 child: Container(
                                   margin: EdgeInsets.only(left: 10, right: 10),
                                   child: Divider(
-                                    height: MediaQuery
-                                        .of(context)
-                                        .size
-                                        .height *
+                                    height: MediaQuery.of(context).size.height *
                                         0.031,
                                     color: Colors.white,
                                     thickness: 1,
@@ -89,11 +80,9 @@ class search_bus_list extends StatelessWidget {
                                 "$to_text",
                                 style: TextStyle(
                                     decoration: TextDecoration.none,
-                                    fontSize: MediaQuery
-                                        .of(context)
-                                        .size
-                                        .height *
-                                        0.028,
+                                    fontSize:
+                                        MediaQuery.of(context).size.height *
+                                            0.028,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -108,21 +97,21 @@ class search_bus_list extends StatelessWidget {
                               SizedBox(width: 10),
                               Text(
                                 "7:45 AM",
-                                style:
-                                TextStyle(
+                                style: TextStyle(
                                     decoration: TextDecoration.none,
-                                    fontSize: 23, color: Colors.white),
+                                    fontSize: 23,
+                                    color: Colors.white),
                                 textAlign: TextAlign.left,
                               ),
                               Expanded(
                                   child: Text(
-                                    "8:05 AM",
-                                    style:
-                                    TextStyle(
-                                        decoration: TextDecoration.none,
-                                        fontSize: 23, color: Colors.white),
-                                    textAlign: TextAlign.right,
-                                  )),
+                                "8:05 AM",
+                                style: TextStyle(
+                                    decoration: TextDecoration.none,
+                                    fontSize: 23,
+                                    color: Colors.white),
+                                textAlign: TextAlign.right,
+                              )),
                               SizedBox(width: 10),
                             ],
                           ),
@@ -139,17 +128,15 @@ class search_bus_list extends StatelessWidget {
                                   color: Colors.blue,
                                   child: GestureDetector(
                                     behavior: HitTestBehavior.opaque,
-                                    onTap: (){
-                                      print("From => $from_text");
-                                      print("To => $to_text");
-                                    },
+                                    onTap: () => Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const bus_details())),
                                     child: Container(
                                       height: 50,
-                                      width:
-                                      MediaQuery
-                                          .of(context)
-                                          .size
-                                          .width * 0.6,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.6,
                                       child: Center(
                                         child: Text(
                                           "Track Shuttle",
@@ -164,7 +151,7 @@ class search_bus_list extends StatelessWidget {
                                   )),
                               GestureDetector(
                                 behavior: HitTestBehavior.opaque,
-                                onTap: (){},
+                                onTap: () {},
                                 child: Card(
                                     shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.only(
@@ -175,12 +162,12 @@ class search_bus_list extends StatelessWidget {
                                     child: Container(
                                         height: 50,
                                         width:
-                                        MediaQuery
-                                            .of(context)
-                                            .size
-                                            .width * 0.15,
-                                        child: Icon(Icons.notifications_active,color: Colors.white,)
-                                    )),
+                                            MediaQuery.of(context).size.width *
+                                                0.15,
+                                        child: Icon(
+                                          Icons.notifications_active,
+                                          color: Colors.white,
+                                        ))),
                               )
                             ],
                           ),
