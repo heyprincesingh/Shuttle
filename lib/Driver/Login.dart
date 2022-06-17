@@ -1,10 +1,14 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shuttle/Driver/Login_driver.dart';
 
 class login extends StatelessWidget {
-  const login({Key? key}) : super(key: key);
+  login({Key? key}) : super(key: key);
+
+  TextEditingController usernameText = TextEditingController();
+  TextEditingController passwordText = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +53,7 @@ class login extends StatelessWidget {
                             child: Padding(
                               padding: const EdgeInsets.only(left: 15),
                               child: TextFormField(
+                                controller: usernameText,
                                 cursorColor: Colors.black,
                                 decoration: InputDecoration(
                                   border: InputBorder.none,
@@ -75,6 +80,7 @@ class login extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.only(left: 15),
                             child: TextFormField(
+                              controller: passwordText,
                               obscureText: true,
                               cursorColor: Colors.black,
                               decoration: InputDecoration(
@@ -93,7 +99,18 @@ class login extends StatelessWidget {
             height: 10,
           ),
           GestureDetector(
-            onTap:() => Navigator.push(context, MaterialPageRoute(builder: (context) => const login_driver())),
+            onTap:() {
+              FocusScope.of(context).requestFocus(FocusNode());
+              usernameText.text.isNotEmpty && passwordText.text.isNotEmpty
+                  ? Navigator.push(context, MaterialPageRoute(builder: (context) => const login_driver()))
+                  /*.then((value) => {
+                usernameText.clear(),
+                passwordText.clear(),
+              })*/
+                  : Fluttertoast.showToast(
+                  msg: 'Enter Details',
+                  toastLength: Toast.LENGTH_SHORT);
+            },
             child: Card(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(

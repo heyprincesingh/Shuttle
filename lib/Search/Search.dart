@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shuttle/Search_bus_list.dart';
+import 'package:shuttle/Search/Search_bus_list.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class search extends StatefulWidget {

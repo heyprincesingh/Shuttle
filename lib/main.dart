@@ -1,10 +1,13 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:shuttle/Driver/Login.dart';
 import 'package:shuttle/Search/Search.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:shuttle/History/history.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
