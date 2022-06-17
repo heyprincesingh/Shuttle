@@ -7,7 +7,15 @@ import 'package:shuttle/bus_details.dart';
 class search_bus_list extends StatelessWidget {
   String? from_text;
   String? to_text;
-  List route = ["Route S1", "Route S1-A", "Route S2", "Route S3", "Route S4", "Route S5" "Route S6"];
+  List route = [
+    "Route S1",
+    "Route S1-A",
+    "Route S2",
+    "Route S3",
+    "Route S4",
+    "Route S5",
+    "Route S6"
+  ];
 
   search_bus_list({Key? key, this.from_text, this.to_text}) : super(key: key);
 
@@ -29,7 +37,21 @@ class search_bus_list extends StatelessWidget {
             child: Column(
               children: [
                 for (int i = 0; i < route.length; i++)
-                  GetUserName(from_text!, to_text!, route[i])
+                  GetUserName(from_text!, to_text!, route[i]),
+                Expanded(
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    child: Center(
+                      child: Text(
+                        "No more shuttle available",
+                        style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.white,
+                            decoration: TextDecoration.none),
+                      ),
+                    ),
+                  ),
+                )
               ],
             ),
           ),
@@ -54,19 +76,32 @@ class GetUserName extends StatelessWidget {
       future: users.doc(route).get(),
       builder:
           (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+        if (snapshot.hasError) {
+          return Text("Something went wrong", style: TextStyle(fontSize: 10));
+        }
+
+        if (snapshot.hasData && !snapshot.data!.exists) {
+          return Text("Document does not exist",
+              style: TextStyle(fontSize: 10));
+        }
+
         if (snapshot.connectionState == ConnectionState.done) {
           Map<String, dynamic> data =
               snapshot.data!.data() as Map<String, dynamic>;
 
-          List a = [];
-          for (int i = 0; i < data["Stop"].length; i++)
-            a.add(data["Stop"][i]["Name"]);
+          List stopsList = [], timeList = [];
+          for (int i = 0; i < data["Stop"].length; i++) {
+            stopsList.add(data["Stop"][i]["Name"]);
+            timeList.add(data["Stop"][i]["Time"]);
+          }
 
-          if(a.contains(from_text) && a.contains(to_text)){
-            Padding(
+          if (stopsList.contains(from_text) && stopsList.contains(to_text)) {
+            int from_textindex = stopsList.indexOf(from_text);
+            int to_textindex = stopsList.indexOf(to_text);
+            return Padding(
               padding: const EdgeInsets.only(bottom: 20),
               child: Container(
-                height: 200,
+                height: MediaQuery.of(context).size.height * 0.27,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                     border: Border.all(width: 2.0, color: Colors.white24),
@@ -74,8 +109,9 @@ class GetUserName extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
+                    SizedBox(height: 10),
                     Text(
                       route,
                       style: TextStyle(
@@ -84,14 +120,20 @@ class GetUserName extends StatelessWidget {
                           color: Colors.white,
                           fontWeight: FontWeight.w500),
                     ),
-                    SizedBox(height: 15),
+                    SizedBox(height: 10),
+                    Divider(
+                      height: MediaQuery.of(context).size.height * 0.001,
+                      color: Colors.white70,
+                      thickness: 1,
+                    ),
+                    SizedBox(height: 20),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SizedBox(width: 10),
                         SizedBox(
-                          width: 90,
+                          width: 110,
                           child: Text(
                             "$from_text",
                             overflow: TextOverflow.ellipsis,
@@ -103,18 +145,18 @@ class GetUserName extends StatelessWidget {
                           ),
                         ),
                         Expanded(
-                          child: Container(
-                            margin: EdgeInsets.only(left: 10, right: 10),
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 10,right: 10),
                             child: Divider(
-                              height: MediaQuery.of(context).size.height *
-                                  0.031,
-                              color: Colors.white,
+                              height:
+                                  MediaQuery.of(context).size.height * 0.031,
+                              color: Colors.white60,
                               thickness: 1,
                             ),
                           ),
                         ),
                         SizedBox(
-                          width: 90,
+                          width: 110,
                           child: Text(
                             "$to_text",
                             overflow: TextOverflow.ellipsis,
@@ -133,9 +175,9 @@ class GetUserName extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        SizedBox(width: 10),
+                        SizedBox(width: 25),
                         Text(
-                          "7:45 AM",
+                          "${timeList[from_textindex]} AM",
                           style: TextStyle(
                               decoration: TextDecoration.none,
                               fontSize: 20,
@@ -144,14 +186,14 @@ class GetUserName extends StatelessWidget {
                         ),
                         Expanded(
                             child: Text(
-                              "8:05 AM",
-                              style: TextStyle(
-                                  decoration: TextDecoration.none,
-                                  fontSize: 20,
-                                  color: Colors.white),
-                              textAlign: TextAlign.right,
-                            )),
-                        SizedBox(width: 10),
+                          "${timeList[to_textindex]} AM",
+                          style: TextStyle(
+                              decoration: TextDecoration.none,
+                              fontSize: 20,
+                              color: Colors.white),
+                          textAlign: TextAlign.right,
+                        )),
+                        SizedBox(width: 25),
                       ],
                     ),
                     SizedBox(height: 15),
@@ -171,11 +213,10 @@ class GetUserName extends StatelessWidget {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                      const bus_details())),
+                                          const bus_details())),
                               child: Container(
                                 height: 50,
-                                width:
-                                MediaQuery.of(context).size.width * 0.6,
+                                width: MediaQuery.of(context).size.width * 0.6,
                                 child: Center(
                                   child: Text(
                                     "Track Shuttle",
@@ -200,8 +241,8 @@ class GetUserName extends StatelessWidget {
                               color: Colors.blue,
                               child: Container(
                                   height: 50,
-                                  width: MediaQuery.of(context).size.width *
-                                      0.15,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.15,
                                   child: Icon(
                                     Icons.notifications_active,
                                     color: Colors.white,
@@ -209,15 +250,15 @@ class GetUserName extends StatelessWidget {
                         )
                       ],
                     ),
+                    SizedBox(height: 15),
                   ],
                 ),
               ),
             );
           }
-          return Text("Not");
+          return SizedBox();
         }
-
-        return Text("loading");
+        return SizedBox();
       },
     );
   }
